@@ -1,0 +1,100 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1589847236713-1
+      author: Minoli (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: ID
+                  type: BIGINT
+              - column:
+                  name: LOG_TIME
+                  type: date
+              - column:
+                  constraints:
+                    nullable: false
+                  name: DESCRIPTION
+                  type: VARCHAR(1000)
+              - column:
+                  name: REF_TABLE
+                  type: VARCHAR(100)
+              - column:
+                  name: REF_KEY
+                  type: VARCHAR(100)
+              - column:
+                  name: REF_VALUE
+                  type: VARCHAR(1000)
+              - column:
+                  name: STACKTRACE
+                  type: TEXT
+              - column:
+                  name: SUB_TASK_ID
+                  type: BIGINT
+              - column:
+                  name: TASK_ID
+                  type: BIGINT
+            tableName: ls_async_log
+
+  - changeSet:
+      id: 1589847236713-4
+      author: Minoli (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: SUB_TASK_ID
+            indexName: LS_ASYNC_LOG_SUB_TASK_ID_IDX
+            tableName: ls_async_log
+  - changeSet:
+      id: 1589847236713-5
+      author: Minoli (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: TASK_ID
+            indexName: LS_ASYNC_LOG_TASK_ID_IDX
+            tableName: ls_async_log
+
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: TASK_ID
+            baseTableName: ls_async_log
+            constraintName: FK_LS_ASYNC_LOG_TASK_ID_IDX
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: ID
+            referencedTableName: ls_async_task
+            validate: true
+  - changeSet:
+      id: 2
+      author: minolid@i360.lk
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: SUB_TASK_ID
+            baseTableName: ls_async_log
+            constraintName: FK_LS_ASYNC_LOG_SUB_TASK_ID_IDX
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: ID
+            referencedTableName: ls_async_sub_task
+            validate: true
+  - changeSet:
+      id:  3
+      author:  minolid@i360.lk
+      changes:
+        - renameColumn:
+            columnDataType:  BIGINT
+            newColumnName:  m_task_id
+            oldColumnName:  task_id
+            tableName:  ls_async_log

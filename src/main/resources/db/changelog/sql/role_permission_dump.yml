@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: amilarath
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: provider_role_id
+                  type: varchar(255)
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: provider_permission_id
+                  type: varchar(255)
+              - column:
+                  name: created_by
+                  type: VARCHAR(100)
+              - column:
+                  name: created_on
+                  type: TIMESTAMP
+              - column:
+                  name: role_id
+                  type: BIGINT
+              - column:
+                  name: permission_id
+                  type: BIGINT
+            tableName: role_permission_dump

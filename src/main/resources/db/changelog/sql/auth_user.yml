@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(45)
+              - column:
+                  constraints:
+                    unique: true
+                  name: email
+                  type: VARCHAR(45)
+            tableName: auth_user
+  - changeSet:
+      id: 2
+      author: minolid@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: user
+                  type: BIGINT
+            tableName: auth_user
+
+  - changeSet:
+      id:  3
+      author:  minolid@i360.lk
+      changes:
+        - renameColumn:
+            columnDataType:  VARCHAR(45)
+            newColumnName:  user_profile
+            oldColumnName:  user
+            remarks:  Property was incorrectly named
+            tableName:  auth_user

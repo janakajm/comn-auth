@@ -1,0 +1,117 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: user_code
+                  type: VARCHAR(45)
+              - column:
+                  name: user_name
+                  type: VARCHAR(100)
+              - column:
+                  name: version
+                  type: BIGINT
+            tableName: user_profile
+  - changeSet:
+      id: 2
+      author: minolid@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: user
+                  type: BIGINT
+            tableName: user_profile
+  - changeSet:
+      id:  3
+      author:  minolid@i360.lk
+      changes:
+        - renameColumn:
+            columnDataType:  VARCHAR(45)
+            newColumnName:  user_id
+            oldColumnName:  user_code
+            remarks:  Property was incorrectly named
+            tableName:  user_profile
+  - changeSet:
+      id: 4
+      author: minolid@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: tenant_id
+                  type: VARCHAR(10)
+              - column:
+                  name: user_role
+                  type: VARCHAR(100)
+              - column:
+                  name: user_type
+                  type: VARCHAR(100)
+              - column:
+                  name: user_status
+                  type: VARCHAR(10)
+              - column:
+                  name: profile_status
+                  type: VARCHAR(10)
+              - column:
+                  name: created_date
+                  type: TIMESTAMP
+              - column:
+                  name: created_by
+                  type: VARCHAR(45)
+              - column:
+                  name: modified_date
+                  type: TIMESTAMP
+              - column:
+                  name: modified_user
+                  type: VARCHAR(45)
+              - column:
+                  name: inactivated_date
+                  type: TIMESTAMP
+              - column:
+                  name: inactivated_user
+                  type: VARCHAR(45)
+              - column:
+                  name: department_id
+                  type: BIGINT
+              - column:
+                  name: designation_id
+                  type: BIGINT
+              - column:
+                  name: designation
+                  type: VARCHAR(100)
+              - column:
+                  name: department
+                  type: VARCHAR(100)
+              - column:
+                  name: employee_number
+                  type: VARCHAR(45)
+              - column:
+                  name: email
+                  type: VARCHAR(50)
+              - column:
+                  name: functional_supervisor
+                  type: VARCHAR(45)
+              - column:
+                  name: administrative_supervisor
+                  type: VARCHAR(45)
+            tableName: user_profile
+
+  - changeSet:
+      id:  5
+      author:  minolid@i360.lk
+      changes:
+        - renameColumn:
+            columnDataType:  BIGINT
+            newColumnName:  auth_user
+            oldColumnName:  user
+            remarks:  Property was incorrectly named for oracle
+            tableName:  user_profile

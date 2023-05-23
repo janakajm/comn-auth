@@ -1,0 +1,70 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: amilarath
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: group_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: permission_id
+                  type: BIGINT
+              - column:
+                  name: created_by
+                  type: VARCHAR(100)
+              - column:
+                  name: created_on
+                  type: timestamp
+              - column:
+                  name: status
+                  type: TINYINT(3)
+            tableName: permission_group
+
+  - changeSet:
+      id: 2
+      author: amilarath
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: permission_id
+            indexName: permission_group_permission_fk_idx
+            tableName: permission_group
+
+  - changeSet:
+      id: 3
+      author: amilarath
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: permission_id
+            baseTableName: permission_group
+            constraintName: permission_group_permission_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: permission
+            validate: true
+
+  - changeSet:
+      id: 4
+      author: amilarath
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: group_id
+            baseTableName: permission_group
+            constraintName: permission_group_group_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: role_group
+            validate: true

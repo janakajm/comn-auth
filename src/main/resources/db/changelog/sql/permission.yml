@@ -1,0 +1,197 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: name
+                  type: VARCHAR(100)
+              - column:
+                  name: description
+                  type: VARCHAR(140)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_by
+                  type: VARCHAR(45)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_on
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: version
+                  type: BIGINT
+            tableName: permission
+
+  - changeSet:
+      id: 2
+      author: minolid@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: search
+                  type: varchar(255)
+            tableName: permission
+
+  - changeSet:
+      id: 3
+      author: minolid@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: meta_1
+                  type: varchar(100)
+            tableName: permission
+  - changeSet:
+      id: 4
+      author: dulanjanam@i360.lk
+      dbms: mysql
+      changes:
+        - renameColumn:
+            columnDataType: VARCHAR(500)
+            newColumnName: description
+            oldColumnName: description
+            remarks: data length increased
+            tableName: permission
+  - changeSet:
+      id: 5
+      author: dulanjanam@i360.lk
+      changes:
+        - modifyDataType:
+            columnName: description
+            newDataType: VARCHAR(500)
+            tableName: permission
+        - modifyDataType:
+            columnName: name
+            newDataType: VARCHAR(300)
+            tableName: permission
+  - changeSet:
+      id: 6
+      author: dulanjanam@i360.lk
+      changes:
+        - modifyDataType:
+            columnName: search
+            newDataType: VARCHAR(800)
+            tableName: permission    
+  - changeSet:
+      id: 7
+      author: amilarath
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: tenant_id
+                  type: varchar(20)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: applicationId
+                  type: varchar(20)
+                  constraints:
+                    nullable: true
+            tableName: permission       
+  - changeSet:
+      id: 8
+      author: amilarath
+      changes:
+      - dropColumn:   
+          columns:
+          - column:
+              name: applicationId
+              type: varchar(20)
+          tableName: permission
+  - changeSet:
+      id: 9
+      author: amilarath
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: application_id
+                  type: varchar(20)
+                  constraints:
+                    nullable: true
+            tableName: permission    
+  - changeSet:
+      id: 10
+      author: amilarath
+      changes:
+      - dropColumn:   
+          columns:
+          - column:
+              name: application_id
+              type: varchar(20)
+          tableName: permission
+  - changeSet:
+      id: 11
+      author: amilarath
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: application_id
+                  type: varchar(200)
+                  constraints:
+                    nullable: true
+            tableName: permission 
+  - changeSet:
+      id: 12
+      author: amilarath
+      changes:
+      - dropColumn:   
+          columns:
+          - column:
+              name: application_id
+              type: varchar(200)
+          - column:
+              name: tenant_id
+              type: varchar(20)
+          tableName: permission
+          
+  - changeSet:
+      id: 13
+      author: amilarath
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: auth0
+                  type: varchar(5)
+                  constraints:
+                    nullable: true
+            tableName: permission 
+  - changeSet:
+      id: 14
+      author: amilarath
+      changes:
+        - modifyDataType:
+            columnName: search
+            newDataType: VARCHAR(4000)
+            tableName: permission
+  - changeSet:
+      id: 15
+      author: amilarath
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: deleted
+                  type: varchar(5)
+                  constraints:
+                    nullable: true
+            tableName: permission 

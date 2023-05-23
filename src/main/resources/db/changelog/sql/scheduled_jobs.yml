@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: dulanjanam@i360.lk
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: job
+                  type: VARCHAR(45)
+              - column:
+                  name: status
+                  type: VARCHAR(15)
+              - column:
+                  name: created_by
+                  type: VARCHAR(45)
+              - column:
+                  name: started_on
+                  type: timestamp
+              - column:
+                  name: ended_on
+                  type: timestamp
+              - column:
+                  name: description
+                  type: VARCHAR(5000)
+            tableName: scheduled_jobs

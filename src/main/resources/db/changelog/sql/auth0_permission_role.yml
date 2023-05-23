@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: amilarath
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: role_name
+                  type: VARCHAR(200)
+              - column:
+                  name: role_provider
+                  type: VARCHAR(100)
+              - column:
+                  name: permission_name
+                  type: VARCHAR(200)
+              - column:
+                  name: permission_provider
+                  type: VARCHAR(100)
+            tableName: auth0_permission_role

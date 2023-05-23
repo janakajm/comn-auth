@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  name: provider
+                  type: VARCHAR(45)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: provider_user_id
+                  type: VARCHAR(100)
+            tableName: provider_user
+
+#  - changeSet:
+#      id: 2
+#      author: minolid@i360.lk (generated)
+#      changes:
+#        - createIndex:
+#            columns:
+#              - column:
+#                  name: role_id
+#            indexName: role_provider_role_fk_idx
+#            tableName: provider_role
+#
+#  - changeSet:
+#      id: 3
+#      author: minolid@i360.lk (generated)
+#      changes:
+#        - addForeignKeyConstraint:
+#            baseColumnNames: role_id
+#            baseTableName: provider_role
+#            constraintName: role_provider_role_fk
+#            deferrable: false
+#            initiallyDeferred: false
+#            onDelete: NO ACTION
+#            onUpdate: NO ACTION
+#            referencedColumnNames: id
+#            referencedTableName: auth_role
+#            validate: true

@@ -1,0 +1,91 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: role_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: permission_id
+                  type: BIGINT
+              - column:
+                  name: created_by
+                  type: VARCHAR(100)
+              - column:
+                  name: created_on
+                  type: VARCHAR(45)
+              - column:
+                  name: status
+                  type: TINYINT(3)
+            tableName: role_permission
+
+  - changeSet:
+      id: 2
+      author: minolid@i360.lk (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: permission_id
+            indexName: permission_role_permission_fk_idx
+            tableName: role_permission
+
+  - changeSet:
+      id: 3
+      author: minolid@i360.lk (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: permission_id
+            baseTableName: role_permission
+            constraintName: permission_role_permission_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: permission
+            validate: true
+
+  - changeSet:
+      id: 4
+      author: minolid@i360.lk (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: role_permission
+            constraintName: role_role_permission_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: auth_role
+            validate: true
+
+  - changeSet:
+      id: 5
+      author: minolid@i360.lk
+      changes:
+        - modifyDataType:
+            columnName: created_on
+            newDataType: timestamp
+            tableName: role_permission
+  - changeSet:
+      id: 6
+      author: amilarath
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: auth0
+                  type: varchar(5)
+                  constraints:
+                    nullable: true
+            tableName: role_permission 

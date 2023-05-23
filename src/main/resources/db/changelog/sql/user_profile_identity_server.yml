@@ -1,0 +1,54 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: identity_server
+                  type: VARCHAR(45)
+              - column:
+                  name: user_identity_servers_id
+                  type: VARCHAR(150)
+              - column:
+                  name: version
+                  type: BIGINT
+              - column:
+                  name: user_profile
+                  type: BIGINT
+            tableName: user_profile_identity_server
+  - changeSet:
+      id: 2
+      author: dulanjaman@i360.lk
+      validCheckSum:
+        - 8:1be90ba3d5a13c9e8620a161c3c3e980
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: user_name
+                  type: VARCHAR(20)
+            tableName: user_profile_identity_server
+  - changeSet:
+      id: 3
+      author: dulanjanam@i360.lk
+      changes:
+        - modifyDataType:
+            columnName: user_name
+            newDataType: VARCHAR(70)
+            tableName: user_profile_identity_server
+  - changeSet:
+      id: 4
+      author: dulanjanam@i360.lk
+      changes:
+        - renameColumn:
+            columnDataType: VARCHAR(70)
+            newColumnName: nick_name
+            oldColumnName: user_name
+            tableName: user_profile_identity_server

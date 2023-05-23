@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
+    <logger name="com.oracle.medrec" level="info" additivity="false">
+        <appender-ref ref="stdout" />
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="stdout" />
+    </root>
+    <logger name="com.loits.comn" level="debug" additivity="false">
+        <appender-ref ref="stdout"/>
+    </logger>
+</configuration>

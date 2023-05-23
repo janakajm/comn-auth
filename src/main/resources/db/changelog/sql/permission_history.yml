@@ -1,0 +1,120 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: permission_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(100)
+              - column:
+                  name: description
+                  type: VARCHAR(140)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_by
+                  type: VARCHAR(45)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_on
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: version
+                  type: BIGINT
+              - column:
+                  name: record_type
+                  type: VARCHAR(45)
+            tableName: permission_history
+  - changeSet:
+      id: 2
+      author: dulanjanam@i360.lk
+      dbms: mysql
+      changes:
+        - renameColumn:
+            columnDataType: VARCHAR(500)
+            newColumnName: description
+            oldColumnName: description
+            remarks: data length increased
+            tableName: permission_history
+  - changeSet:
+      id: 3
+      author: dulanjanam@i360.lk
+      changes:
+        - modifyDataType:
+            columnName: description
+            newDataType: VARCHAR(500)
+            tableName: permission_history
+        - modifyDataType:
+            columnName: name
+            newDataType: VARCHAR(300)
+            tableName: permission_history
+  - changeSet:
+      id: 4
+      author: amilarath
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: tenant_id
+                  type: varchar(20)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: application_id
+                  type: varchar(20)
+                  constraints:
+                    nullable: true
+            tableName: permission_history  
+  - changeSet:
+      id: 5
+      author: amilarath
+      changes:
+      - dropColumn:   
+          columns:
+          - column:
+              name: application_id
+              type: varchar(20)
+          tableName: permission_history
+  - changeSet:
+      id: 6
+      author: amilarath
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: application_id
+                  type: varchar(200)
+                  constraints:
+                    nullable: true
+            tableName: permission_history 
+  - changeSet:
+      id: 7
+      author: amilarath
+      changes:
+      - dropColumn:   
+          columns:
+          - column:
+              name: application_id
+              type: varchar(200)
+          - column:
+              name: tenant_id
+              type: varchar(20)
+          tableName: permission_history

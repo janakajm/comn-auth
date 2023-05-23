@@ -1,0 +1,22 @@
+databaseChangeLog:
+- changeSet:
+    id: 1
+    author: minolid@i360.lk
+    changes:
+    - createTable:
+        tableName: seq_async_task
+        columns:
+        - column:
+            name: next_val
+            type: bigint
+
+- changeSet:
+    id: 2
+    author: minolid@360.lk
+    changes:
+    - insert:
+        tableName: seq_async_task
+        columns:
+        - column:
+            name: next_val
+            value: 1

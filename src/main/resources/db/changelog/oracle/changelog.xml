@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                            http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+<!--     <changeSet author="minoli" id="1"> -->
+<!--         <sql dbms="h2, oracle" -->
+<!--              endDelimiter="\nGO" -->
+<!--              splitStatements="true" -->
+<!--              stripComments="true"> -->
+<!--             declare -->
+<!--             userexist integer; -->
+<!--             pw VARCHAR2(60); -->
+<!--             deftablespace VARCHAR2(60); -->
+<!--             defuser VARCHAR2(60); -->
+
+<!--             begin -->
+<!--             select user into defuser from dual; -->
+
+<!--             if (defuser = 'APP') then -->
+
+<!--             delete from APP.databasechangelog; -->
+<!--             for c1 in (select * from SYS.user_tables) loop -->
+<!--             if (c1.TABLE_NAME != 'TENANT_CONFIGUE' AND c1.TABLE_NAME != 'USER_PW' AND c1.TABLE_NAME != 'DATABASECHANGELOG' AND c1.TABLE_NAME != 'DATABASECHANGELOGLOCK') then -->
+<!--             execute immediate 'DROP TABLE '|| '"'||c1.TABLE_NAME||'" CASCADE CONSTRAINTS'; -->
+<!--             end if; -->
+<!--             end loop; -->
+
+<!--             for c2 in (select * from APP.TENANT_CONFIGUE) loop -->
+
+<!--             select count(*) into userexist from all_users where username=c2.SCHEME_NAME; -->
+
+<!--             if (userexist = 0) then -->
+<!--             SELECT PSW into pw FROM APP.USER_PW WHERE USERNAME='NEW_USER'; -->
+<!--             SELECT default_tablespace into deftablespace FROM APP.USER_PW WHERE USERNAME='NEW_USER'; -->
+
+<!--             execute immediate 'create user '|| '"'||c2.SCHEME_NAME||'" identified by '|| '"'||pw||'" default tablespace '|| '"'||deftablespace||'" temporary tablespace TEMP'; -->
+<!--             execute immediate 'grant create session to '|| '"'||c2.SCHEME_NAME||'"'; -->
+<!--             execute immediate 'grant create table to '|| '"'||c2.SCHEME_NAME||'"'; -->
+<!--             execute immediate 'alter session set current_schema = '|| '"'||c2.SCHEME_NAME||'"'; -->
+<!--             execute immediate 'grant select on APP.USER_PW to '|| '"'||c2.SCHEME_NAME||'"'; -->
+<!--             execute immediate 'grant select on APP.TENANT_CONFIGUE to '|| '"'||c2.SCHEME_NAME||'"'; -->
+<!--             execute immediate 'grant delete on APP.databasechangelog to '|| '"'||c2.SCHEME_NAME||'"'; -->
+<!--             execute immediate 'grant create sequence to '|| '"'||c2.SCHEME_NAME||'"'; -->
+<!--             execute immediate 'ALTER USER '|| '"'||c2.SCHEME_NAME||'" QUOTA unlimited ON '|| '"'||deftablespace||'"'; -->
+<!--             execute immediate 'create sequence common_seq start with 1'; -->
+<!--             end if; -->
+<!--             end loop; -->
+<!--             end if; -->
+<!--             end; -->
+<!--         </sql> -->
+<!--     </changeSet> -->
+    <include file="db/changelog/sql/changelog.yml"/>
+</databaseChangeLog>

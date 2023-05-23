@@ -1,0 +1,194 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: role_group_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: created_by
+                  type: VARCHAR(45)
+              - column:
+                  name: created_on
+                  type: timestamp
+              - column:
+                  name: status
+                  type: TINYINT(3)
+            tableName: role_group_user
+
+  - changeSet:
+      id: 2
+      author: minolid@i360.lk (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: user_id
+            indexName: user_role_group_user_fk_idx
+            tableName: role_group_user
+
+  - changeSet:
+      id: 3
+      author: minolid@i360.lk (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: role_group_id
+            baseTableName: role_group_user
+            constraintName: role_group_user_role_group_fk_idx
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: role_group
+            validate: true
+
+  - changeSet:
+      id: 4
+      author: minolid@i360.lk (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: role_group_user
+            constraintName: user_role_group_user_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: auth_user
+            validate: true
+  - changeSet:
+      id: 5
+      author: minolid@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: expires
+                  type: timestamp
+            tableName: role_group_user
+
+  - changeSet:
+      id: 6
+      author: minolid@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: delegatable
+                  type: TINYINT(3)
+            tableName: role_group_user
+
+  - changeSet:
+      id:  7
+      author:  minolid@i360.lk
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName:  role_group_user
+            constraintName:  user_role_group_user_fk
+
+  - changeSet:
+      id: 8
+      author: minolid@i360.lk (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: role_group_user
+            constraintName: user_role_group_user_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: user_profile
+            validate: true
+
+  - changeSet:
+      id: 9
+      author: dulanjanam@i360.lk
+      dbms: oracle
+      validCheckSum:
+        - 8:2dbe3899f24b9be2e849d9903c120152
+      preConditions:
+        - onFail: MARK_RAN
+        - primaryKeyExists:
+            tableName: role_group_user
+      changes:
+        - dropPrimaryKey:
+            tableName: role_group_user
+            dropIndex: true
+
+  - changeSet:
+      id: 10
+      author: dulanjanam@i360.lk
+      dbms: oracle
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: id
+                  constraints:
+                    primaryKey: true
+                  type: BIGINT
+            tableName: role_group_user
+
+  - changeSet:
+      id: 11
+      author: dulanjaman@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: user_group_id
+                  type: BIGINT
+            tableName: role_group_user
+
+  - changeSet:
+      id: 12
+      author: dulanjanam@i360.lk
+      dbms: mysql
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: role_group_user
+            constraintName: user_role_group_user_fk
+        - dropForeignKeyConstraint:
+            baseTableName: role_group_user
+            constraintName: role_group_user_role_group_fk_idx
+
+  - changeSet:
+      id: 13
+      author: dulanjanam@i360.lk
+      dbms: mysql
+      preConditions:
+        - onFail: MARK_RAN
+        - primaryKeyExists:
+            tableName: role_group_user
+      changes:
+        - dropPrimaryKey:
+            tableName: role_group_user
+            dropIndex: true
+
+  - changeSet:
+      id: 14
+      author: dulanjanam@i360.lk
+      dbms: mysql
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: id
+                  constraints:
+                    primaryKey: true
+                  type: BIGINT
+            tableName: role_group_user

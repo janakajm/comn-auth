@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: user_group
+                  type: BIGINT
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: role_group
+                  type: BIGINT
+              - column:
+                  name: expires
+                  type: TIMESTAMP
+              - column:
+                  name: delegatable
+                  type: TINYINT
+            tableName: user_group_role_group

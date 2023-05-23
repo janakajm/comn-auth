@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: user_group
+                  type: BIGINT
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: user_profile
+                  type: BIGINT
+            tableName: user_group_profile

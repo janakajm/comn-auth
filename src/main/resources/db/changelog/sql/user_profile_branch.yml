@@ -1,0 +1,103 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: branch
+                  type: BIGINT
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: user_profile
+                  type: BIGINT
+            tableName: user_profile_branch
+
+  - changeSet:
+      id: 2
+      author: minolid@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: from_date
+                  type: TIMESTAMP
+              - column:
+                  name: to_date
+                  type: TIMESTAMP
+              - column:
+                  name: status
+                  type: TINYINT
+            tableName: user_profile_branch
+
+  - changeSet:
+      id: 3
+      author: minolid@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: created_on
+                  type: TIMESTAMP
+              - column:
+                  name: modified_on
+                  type: TIMESTAMP
+              - column:
+                  name: created_by
+                  type: VARCHAR(45)
+              - column:
+                  name: modified_by
+                  type: VARCHAR(45)
+            tableName: user_profile_branch
+
+  - changeSet:
+      id: 4
+      author: minolid@i360.lk
+      changes:
+        - dropTable:
+            cascadeConstraints:  true
+            tableName:  user_profile_branch
+
+  - changeSet:
+      id: 5
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: branch
+                  type: BIGINT
+              - column:
+                  name: user_profile
+                  type: BIGINT
+              - column:
+                  name: from_date
+                  type: TIMESTAMP
+              - column:
+                  name: to_date
+                  type: TIMESTAMP
+              - column:
+                  name: status
+                  type: TINYINT
+              - column:
+                  name: created_on
+                  type: TIMESTAMP
+              - column:
+                  name: modified_on
+                  type: TIMESTAMP
+              - column:
+                  name: created_by
+                  type: VARCHAR(45)
+              - column:
+                  name: modified_by
+                  type: VARCHAR(45)
+            tableName: user_profile_branch

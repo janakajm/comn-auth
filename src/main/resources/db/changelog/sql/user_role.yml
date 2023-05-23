@@ -1,0 +1,282 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: role_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: role_group_id
+                  type: BIGINT
+              - column:
+                  name: created_by
+                  type: VARCHAR(45)
+              - column:
+                  name: created_on
+                  type: timestamp
+              - column:
+                  name: status
+                  type: TINYINT(3)
+            tableName: user_role
+
+  - changeSet:
+      id: 2
+      author: minolid@i360.lk (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: role_id
+            indexName: user_role_role_fk_idx
+            tableName: user_role
+
+  - changeSet:
+      id: 3
+      author: minolid@i360.lk (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: user_role
+            constraintName: user_user_role_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: auth_user
+            validate: true
+
+  - changeSet:
+      id: 4
+      author: minolid@i360.lk (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: user_role
+            constraintName: user_role_role_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: auth_role
+            validate: true
+
+  - changeSet:
+      id: 5
+      author: minolid@i360.lk (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: role_group_id
+            indexName: user_role_role_group_fk_idx
+            tableName: user_role
+
+  - changeSet:
+      id: 6
+      author: minolid@i360.lk (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: role_group_id
+            baseTableName: user_role
+            constraintName: user_role_role_group_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: role_group
+            validate: true
+
+  - changeSet:
+      id: 7
+      author: minolid@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: expires
+                  type: timestamp
+            tableName: user_role
+  - changeSet:
+      id: 8
+      author: minolid@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: delegatable
+                  type: TINYINT(3)
+            tableName: user_role
+  - changeSet:
+      id:  9
+      author:  minolid@i360.lk
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName:  user_role
+            constraintName:  user_user_role_fk
+
+  - changeSet:
+      id: 10
+      author: minolid@i360.lk (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: user_role
+            constraintName: user_user_role_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: auth_user
+            validate: true
+
+  - changeSet:
+      id:  11
+      author:  minolid@i360.lk
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName:  user_role
+            constraintName:  user_user_role_fk
+
+  - changeSet:
+      id: 12
+      author: minolid@i360.lk (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: user_role
+            constraintName: user_user_role_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: user_profile
+            validate: true
+  - changeSet:
+      id: 13
+      author: dulanjaman@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: user_group_id
+                  type: BIGINT
+            tableName: user_role
+  - changeSet:
+      id:  14
+      author:  minolid@i360.lk
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName:  user_role
+            constraintName:  user_user_role_fk
+        - dropForeignKeyConstraint:
+            baseTableName:  user_role
+            constraintName:  user_role_role_group_fk
+        - dropForeignKeyConstraint:
+            baseTableName:  user_role
+            constraintName:  user_role_role_fk
+  - changeSet:
+      id: 15
+      author: dulanjanam@i360.lk
+      dbms: mysql
+      changes:
+        - dropPrimaryKey:
+            tableName: user_role
+        - addColumn:
+            columns:
+              - column:
+                  name: id
+                  constraints:
+                    primaryKey: true
+                  type: BIGINT
+            tableName: user_role
+  - changeSet:
+      id: 16
+      author: dulanjanam@i360.lk
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: user_role
+            constraintName: user_user_role_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: user_profile
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: role_group_id
+            baseTableName: user_role
+            constraintName: user_role_role_group_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: role_group
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: user_role
+            constraintName: user_role_role_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: auth_role
+            validate: true
+
+  - changeSet:
+      id: 17
+      author: lahirub@i360.lk
+      dbms: mysql
+      changes:
+        - dropPrimaryKey:
+            tableName: user_role
+        - dropColumn:
+            columns:
+              - column:
+                  name: id
+            tableName: user_role
+
+  - changeSet:
+      id: 18
+      author: lahirub@i360.lk
+      preConditions:
+        - onFail: MARK_RAN
+        - primaryKeyExists:
+            tableName: user_role
+      changes:
+        - dropPrimaryKey:
+            tableName: user_role
+
+  - changeSet:
+      id: 19
+      author: lahirub@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: id
+                  constraints:
+                    primaryKey: true
+                  type: BIGINT
+            tableName: user_role

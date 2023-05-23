@@ -1,0 +1,72 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: group_code
+                  type: VARCHAR(100)
+              - column:
+                  name: group_name
+                  type: VARCHAR(150)
+              - column:
+                  name: group_owner
+                  type: VARCHAR(200)
+              - column:
+                  name: group_type_id
+                  type: BIGINT
+              - column:
+                  name: group_type
+                  type: VARCHAR(100)
+              - column:
+                  name: version
+                  type: BIGINT
+            tableName: user_group
+
+  - changeSet:
+      id: 2
+      author: minolid@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: tenant_id
+                  type: VARCHAR(10)
+              - column:
+                  name: group_owner_id
+                  type: BIGINT
+              - column:
+                  name: status
+                  type: VARCHAR(10)
+              - column:
+                  name: created_date
+                  type: TIMESTAMP
+              - column:
+                  name: created_by
+                  type: VARCHAR(45)
+              - column:
+                  name: modified_date
+                  type: TIMESTAMP
+              - column:
+                  name: modified_user
+                  type: VARCHAR(45)
+            tableName: user_group
+
+  - changeSet:
+      id:  3
+      author:  minolid@i360.lk
+      changes:
+        - renameColumn:
+            columnDataType:  VARCHAR(200)
+            newColumnName:  group_owner_name
+            oldColumnName:  group_owner
+            remarks:  FusionX response property changed
+            tableName:  user_group
+

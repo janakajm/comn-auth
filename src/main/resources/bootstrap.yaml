@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: comn-auth
+  cloud:
+    config:
+      uri: ${CONFIG_SERVER_URL}
+      username: ${CONF_SERVER_USR}
+      password: ${CONF_SERVER_PASS}
+  profiles:
+    active:
+      - ${CONF_ENV_NAME}

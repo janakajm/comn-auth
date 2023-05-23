@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: amilarath
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: process_code
+                  type: VARCHAR(5)
+              - column:
+                  name: created_by
+                  type: VARCHAR(45)
+              - column:
+                  name: created_on
+                  type: timestamp
+              - column:
+                  name: process
+                  type: varchar(2)
+            tableName: process_log

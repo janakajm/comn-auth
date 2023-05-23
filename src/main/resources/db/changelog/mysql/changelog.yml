@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: "db/changelog/sql/changelog.yml"
+  - include:
+      file: "db/changelog/mysql/sequence.yml"
+  - include:
+      file: "db/changelog/mysql/async_sequence.yml"

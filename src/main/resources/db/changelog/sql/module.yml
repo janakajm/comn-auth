@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: code
+                  type: VARCHAR(100)
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: label
+                  type: VARCHAR(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_by
+                  type: VARCHAR(45)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_on
+                  type: timestamp
+            tableName: module

@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1589847236713-3
+      author: Minoli (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: ID
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: TASK
+                  type: VARCHAR(200)
+              - column:
+                  name: S_DATE
+                  type: date
+              - column:
+                  name: M_DATE
+                  type: date
+              - column:
+                  name: E_DATE
+                  type: date
+              - column:
+                  constraints:
+                    nullable: false
+                  name: JOB_ID
+                  type: VARCHAR(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: STATUS
+                  type: VARCHAR(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: MODULE
+                  type: VARCHAR(100)
+              - column:
+                  name: META
+                  type: TEXT
+              - column:
+                  name: SEVERITY
+                  type: VARCHAR(10)
+              - column:
+                  name: NOTIFY
+                  type: VARCHAR(1)
+            tableName: ls_async_task
+

@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: role_group_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(100)
+              - column:
+                  name: description
+                  type: VARCHAR(140)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_by
+                  type: VARCHAR(45)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_on
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: version
+                  type: BIGINT
+              - column:
+                  name: record_type
+                  type: VARCHAR(45)
+            tableName: role_group_history

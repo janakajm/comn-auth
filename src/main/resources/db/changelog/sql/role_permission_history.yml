@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: role_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: permission_id
+                  type: BIGINT
+              - column:
+                  name: status
+                  type: TINYINT(3)
+              - column:
+                  name: created_by
+                  type: VARCHAR(45)
+              - column:
+                  name: created_on
+                  type: VARCHAR(45)
+              - column:
+                  name: record_type
+                  type: VARCHAR(45)
+            tableName: role_permission_history
+
+  - changeSet:
+      id: 2
+      author: minolid@i360.lk
+      changes:
+        - modifyDataType:
+            columnName: created_on
+            newDataType: timestamp
+            tableName: role_permission_history

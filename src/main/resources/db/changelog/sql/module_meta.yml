@@ -1,0 +1,54 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: meta_key
+                  type: VARCHAR(45)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: value
+                  type: VARCHAR(150)
+              - column:
+                  name: module
+                  type: VARCHAR(100)
+            tableName: module_meta
+
+  - changeSet:
+      id: 2
+      author: minolid@i360.lk
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: module
+            indexName: module_module_meta_idx
+            tableName: module_meta
+
+  - changeSet:
+      id: 3
+      author: minolid@i360.lk
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: module
+            baseTableName: module_meta
+            constraintName: permission_provider_permission_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: code
+            referencedTableName: module
+            validate: true
+

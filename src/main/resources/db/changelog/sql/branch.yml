@@ -1,0 +1,98 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: minolid@i360.lk (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: branch_id
+                  type: BIGINT
+              - column:
+                  name: branch_code
+                  type: VARCHAR(100)
+              - column:
+                  name: organization_level_id
+                  type: BIGINT
+              - column:
+                  name: organization_level
+                  type: VARCHAR(100)
+              - column:
+                  name: version
+                  type: BIGINT
+            tableName: branch
+  - changeSet:
+      id: 2
+      author: minolid@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: role
+                  type: BIGINT
+            tableName: branch
+
+  - changeSet:
+      id: 3
+      author: minolid@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: tenant_id
+                  type: VARCHAR(10)
+              - column:
+                  name: from_date
+                  type: TIMESTAMP
+              - column:
+                  name: to_date
+                  type: TIMESTAMP
+              - column:
+                  name: status
+                  type: VARCHAR(10)
+              - column:
+                  name: created_date
+                  type: TIMESTAMP
+              - column:
+                  name: created_by
+                  type: VARCHAR(45)
+              - column:
+                  name: modified_date
+                  type: TIMESTAMP
+              - column:
+                  name: modified_user
+                  type: VARCHAR(45)
+            tableName: branch
+
+  - changeSet:
+      id: 4
+      author: minolid@i360.lk
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: branch_name
+                  type: VARCHAR(50)
+            tableName: branch
+
+  - changeSet:
+      id: 5
+      author: minolid@i360.lk
+      changes:
+        - dropColumn:
+            columns:
+              - column:
+                  name: from_date
+                  type: TIMESTAMP
+              - column:
+                  name: to_date
+                  type: TIMESTAMP
+              - column:
+                  name: branch_id
+                  type: BIGINT
+            tableName: branch
